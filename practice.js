@@ -15,8 +15,6 @@ alert(me.name);
 //NEXT PROBLEM
 
 
-
-
 //Make a 'favoriteThings' object that contains the following keys: band, food, person, book, movie, holiday. Have the values to those keys be your favorite thing in that category.
 
   //Code here
@@ -44,9 +42,7 @@ alert(me.name);
   favoriteThings.book = "50 Shades of Gray";
 
 
-
 //NEXT PROBLEM
-
 
 
 /*Create an empty Object called backPack. Now, create a variable called 'item'
@@ -76,10 +72,7 @@ Instead, console.log your whole backPack object and then check out the console. 
 console.log(backpack);
 
 
-
 //NEXT PROBLEM
-
-
 
 
 //Create another 'me' object with the following properties name, age, height, gender, married, eyeColor, hairColor. Fill those properties in with the appropriate values.
@@ -98,47 +91,65 @@ console.log(backpack);
 //Now, loop through your object and alert every value. *Tyler --> 24 --> 6'0 --> Male, etc etc
 
   //Code Here
-for (var i = 0; i < 7; i++) { //Fix this before moving on
-  alert(me[i]);
-}
 
+var prop;
+for (prop in me) {
+  var x = me[prop];
+  alert(x);
+}
 
 
 //NEXT PROBLEM
 
 
-
-
-//Create an Object called 'album' with 5 keys named different song titles that you make up, with the values being the length of each song.
+//Create an Object called 'album' with 5 keys named different song titles that you make up,
+//with the values being the length of each song.
 
   //Code Here
+  var album = {
+    esso: 4,
+    manchild: 8,
+    powa: 4,
+    gangsta: 7,
+    bizness: 7
+  };
 
 //Now, loop through your album object alerting every song title individually.
 
   //Code Here
-
-
-
-
-//NEXT PROBLEM
-
-
-
-
-//Create an object called states that has 5 US states as properties with the values being their population (doesn't have to be accurate).
-
-  //Code Here
-
-//Now, loop through your states object and if the states population is greater than 30K, alert that state.
-
-  //Code Here
-
-
+var title = Object.keys();
+for (var i = 0; i < title.length; i++) {
+  alert(title[i]);
+}
 
 
 //NEXT PROBLEM
 
 
+//Create an object called states that has 5 US states as properties with the values
+//being their population (doesn't have to be accurate).
+
+  //Code Here
+  var states = {
+    alaska: 736732,
+    nebraska: 1881503,
+    colorado: 5355866,
+    oregon: 4013845,
+    utah: 2949902
+  };
+
+//Now, loop through your states object and if the states population is greater than 30K,
+//alert that state.
+
+  //Code Here
+  for(var prop in states) {
+    if (states[prop] > 30000) {
+      alert(prop);
+    }
+  } 
+
+
+//NEXT PROBLEM
 
 
 var user = {
@@ -153,17 +164,21 @@ var user = {
 that each value is truthy. If it's not truthy, remove it from the object. */
 
   //Code Here
+  for (var prop in user) {
+    if (!user[prop]) {
+      delete user[prop];
+    }
+  }
 
 //Once you get your truthy Object, Change the remaining values in the object to be specific to you (name: 'your name', username: 'your username'), rather than my information.
 
   //Code Here
-
-
+user.name = "Nick";
+user.pwHash = "PassWord0!";
+user.username = "npm1514";
 
 
 //NEXT PROBLEM
-
-
 
 
 var user = {
@@ -177,68 +192,97 @@ var user = {
             alert('Email is : ' + this.email);
         }
 };
+
 //Let's say I, the user, decided to change my name and email address to the following
 // name -> 'Tyler S. McGinnis', email -> 'tyler.mcginnis@devmounta.in'. Make that change.
 
   //Code Here
+  user.name = "Tyler S. McGinnis";
+  user.email = "tyler.mcginnis@devmounta.in";
 
 //Now call the sayName method that's on the user object which will alert the users email
 
   //Code Here
-
-
+user.sayName();
 
 
 //NEXT PROBLEM
 
 
-
-
 //Create an empty object called methodCollection.
 
   //Code Here
+  var methodCollection = {};
 
 /*Now add two methods (functions that are properties on objects) to your methodCollection
 object. One called 'alertHello' which alerts 'hello' and another method called logHello
  which logs 'hello' to the console. */
 
   //Code Here
+  methodCollection.alertHello = function() {
+    alert("hello");
+  };
+  methodCollection.logHello = function() {
+    console.log("hello");
+  };
 
 //Now call your alertHello and logHello methods.
 
   //Code Here
-
+methodCollection.alertHello();
+methodCollection.logHello();
 
 
 //NEXT PROBLEM
 
 
-
-// Create a function called MakePerson which takes in name, birthday, ssn as its parameters and returns a new object with all of the information that you passed in.
+// Create a function called MakePerson which takes in name, birthday, ssn as its parameters
+//and returns a new object with all of the information that you passed in.
 
   //Code Here
-
+function MakePerson(name, birthday, ssn) {
+  var obj = {};
+  obj.name = name;
+  obj.birthday = birthday;
+  obj.ssn = ssn;
+  return obj;
+}
 
 
 //NEXT PROBLEM
 
 
 
-// Create a function called MakeCard which takes in all the data it needs to make a Credit Card object and returns that object so that whenever you invoke MakeCard, you get a brand new credit card.
+// Create a function called MakeCard which takes in all the data it needs to make a 
+//Credit Card object and returns that object so that whenever you invoke MakeCard, 
+//you get a brand new credit card.
 
   //Code Here
-  
+  function MakeCard(type, cardNum, expDate, nameOnCard, CVV) {
+    var obj = {
+      type: type,
+      cardNum: cardNum,
+      expDate: expDate,
+      nameOnCard: nameOnCard,
+      CVV: CVV
+    };
+    return obj;
+  }
   
   
 //NEXT PROBLEM
 
 
 
-/* As of this point you should have a MakePerson and a MakeCard function which returns you either a person or a credit card object.
-   Now, create a bindCard function that takes in a person object as its first parameter and a creditcard object as its second parameter.
-   Have bindCard merge the two parameters together into a new object which contains all the properties from the person as well as the creditcard.
+/* As of this point you should have a MakePerson and a MakeCard function which returns 
+you either a person or a credit card object. Now, create a bindCard function that takes
+in a person object as its first parameter and a creditcard object as its second parameter.
+Have bindCard merge the two parameters together into a new object which contains all the 
+properties from the person as well as the creditcard.
 */
 
   //Code Here
-
-
+function bindCard(MakePerson,MakeCard) {
+  var obj = MakePerson + MakeCard;
+  return obj;
+}
